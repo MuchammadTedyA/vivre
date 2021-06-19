@@ -128,13 +128,13 @@
       {{-- <div class="container">
         <span onclick="openNav()"><img src="" alt="icon"></span>
       </div> --}}
-      <div id="mySidenav" class="sidenav">
+      <div id="" class="sidenav">
         {{-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> --}}
         
         <a class="menu" href="{{ url('/kasir') }}"><span class="text-center"><img src="" alt="icon"><br>Pesanan Baru</span></a>
         <a class="menu" href="{{ url('/pembayaran') }}"><img src="" alt="icon"><br>Pembayaran</a>
         <a class="menu" href="#"><img src="" alt="icon"><br>Riwayat</a>
-        <a class="menu" href="#"><img src="" alt="icon"><br>Toko Saya</a>
+        <a class="menu" href="{{ url('/tokoSaya') }}"><img src="" alt="icon"><br>Toko Saya</a>
         <a class="logout teks" href="#">Logout</a>
         
       </div>

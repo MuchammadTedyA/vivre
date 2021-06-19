@@ -18,3 +18,4 @@ Route::get('/', [PagesController::class, 'login']);
 Route::get('/kitchenSystem', [PagesController::class, 'kitchenSystem']);
 Route::get('/kasir', [PagesController::class, 'kasir']);
 Route::get('/pembayaran', [PagesController::class, 'pembayaran']);
+Route::get('/tokoSaya', [PagesController::class, 'tokoSaya']);

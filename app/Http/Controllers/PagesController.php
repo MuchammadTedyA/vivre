@@ -20,4 +20,7 @@ class PagesController extends Controller
     public function pembayaran(){
         return view('kasirPembayaran');
     }
+    public function tokoSaya(){
+        return view('tokoSaya');
+    }
 }
