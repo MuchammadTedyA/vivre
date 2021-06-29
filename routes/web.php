@@ -19,3 +19,5 @@ Route::get('/kitchenSystem', [PagesController::class, 'kitchenSystem']);
 Route::get('/kasir', [PagesController::class, 'kasir']);
 Route::get('/pembayaran', [PagesController::class, 'pembayaran']);
 Route::get('/tokoSaya', [PagesController::class, 'tokoSaya']);
+Route::get('/tokoSaya/Karyawan', [PagesController::class, 'tokoSayaKaryawan']);
+Route::get('/tokoSaya/pengaturanAkun', [PagesController::class, 'tokoSaya']);

@@ -22,12 +22,18 @@
                     
                 </div>
                 <div class="metode-bayar">
-                    <img src="" alt="icon">
-                    <p>Debit/Kredit</p>
+                    <a href="">
+                        <img src="" alt="icon">
+                        <p>Debit/Kredit</p>
+                    </a>
+                    
                 </div>
                 <div class="metode-bayar">
-                    <img src="" alt="icon">
-                    <p>Uang Elektronik</p>
+                    <a href="">
+                        <img src="" alt="icon">
+                        <p>Uang Elektronik</p>
+                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -46,6 +52,9 @@
         grid-template-columns: repeat(3, auto);
         text-align: center;
     }
+    .kotakFitur{
+
+    }
     .metode-bayar{
         border-radius: 20px;
         height: 150px;
@@ -63,7 +72,19 @@
     
     }
     .metode-bayar a{
-        
+        border-radius: 20px;
+        height: 150px;
+        width: 150px;
+        color: #13597D;
+        padding: 8px 8px 8px 8px;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        transition: 0.3s;
+    }
+    .metode-bayar a:hover{
+        color: #f1f1f1;
+        background-color: #13597D;
        
     }
     .navPembayaran{

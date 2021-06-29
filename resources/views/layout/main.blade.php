@@ -34,7 +34,7 @@
         z-index: 1; /* Stay on top */
         top: 0; /* Stay at the top */
         left: 0;
-        background-color: #f2f7fa; /* Black*/
+        background-color: #ffffff; /* Black*/
         overflow-x: hidden; /* Disable horizontal scroll */
         padding-top: 10px; /* Place content 60px from the top */
         /* transition: 0.5s; 0.5 second transition effect to slide in the sidenav */

@@ -21,6 +21,9 @@ class PagesController extends Controller
         return view('kasirPembayaran');
     }
     public function tokoSaya(){
-        return view('tokoSaya');
+        return view('toko.menu');
+    }
+    public function tokoSayaKaryawan(){
+        return view('toko.karyawan');
     }
 }

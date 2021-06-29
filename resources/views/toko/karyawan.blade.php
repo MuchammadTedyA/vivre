@@ -13,15 +13,15 @@
             </div>
             <form class="ma">
                 <div class="form-group margin">
-                  <label for="formGroupExampleInput">Nama Menu</label>
+                  <label for="formGroupExampleInput">Nama Karyawan</label>
                   <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
                 </div>
                 <div class="form-group margin">
-                  <label for="formGroupExampleInput2">Deskripsi</label>
+                  <label for="formGroupExampleInput2">Alamat Karyawan</label>
                   <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
                 </div>
                 <div class="form-group margin">
-                    <label for="formGroupExampleInput2">Kategori</label>
+                    <label for="formGroupExampleInput2">Kode Karyawan</label>
                     <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
                 </div>
                 <div class="form-group margin">
@@ -48,7 +48,7 @@
                 </div>
                 
             </div>
-            <button type="button" class="btn" style="background-color: #13597D; color: white; width: 150px; margin-top: 20px; border-radius: 10px">Tambah Menu</button>
+            <button type="button" class="btn" style="background-color: #13597D; color: white; width: 150px; margin-top: 20px; border-radius: 10px">Tambah Karyawan</button>
         </div>
     </div>
     <div class="container">
