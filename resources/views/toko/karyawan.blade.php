@@ -2,6 +2,11 @@
 
 @section('isiToko')
 
+@if (Session::has('message'))
+<script>
+    alert("{!!Session::get('message')!!}");
+</script>
+@endif
 
 <div class="navAtas">
     
@@ -39,27 +44,33 @@
                 <form class="ma">
                     <div class="form-group margin">
                         <label for="formGroupExampleInput">NIK</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                      </div>
+                        <input name="nik" type="text" class="form-control" id="formGroupExampleInput" placeholder="" required>
+                    </div>
+                     <div class="form-group margin">
+                        <label for="formGroupExampleInput2">Kode Karyawan</label>
+                        <input name="kodeKaryawan" type="area" class="form-control" id="formGroupExampleInput2" placeholder="" required>
+                    </div>
                     <div class="form-group margin">
                       <label for="formGroupExampleInput">Nama Karyawan</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                      <input name="namaKaryawan" type="text" class="form-control" id="formGroupExampleInput" placeholder="" required>
                     </div>
                     <div class="form-group margin">
                         <label for="formGroupExampleInput2">Password</label>
-                        <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="">
+                        <input name="password" type="password" class="form-control" id="formGroupExampleInput2" placeholder="" required>
                     </div>
                     <div class="form-group margin">
                       <label for="formGroupExampleInput2">Alamat Karyawan</label>
-                      <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
+                      <input name="alamat" type="area" class="form-control" id="formGroupExampleInput2" placeholder="" required>
                     </div>
+                    
                     <div class="form-group margin">
-                        <label for="formGroupExampleInput2">Kode Karyawan</label>
-                        <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
-                    </div>
-                    <div class="form-group margin">
-                        <label for="formGroupExampleInput2">Posisi</label>
-                        <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
+                        <label for="validationCustom04" class="form-label">Posisi</label>
+                        <select class="form-select" aria-label="Default select example" name="posisi" required>
+                            <option selected disabled value="">--Pilih Posisi--</option>
+                            <option value="kasir">Kasir</option>
+                            <option value="dapur">Dapur</option>
+                            
+                          </select>
                     </div>
                 
             </div>
@@ -77,11 +88,11 @@
                         <p>
                              Masukan Foto Karyawan
                         </p>
-                        <input class="mb-2" type="file" name="file">
+                        <input class="mb-2" type="file" name="file" required>
                              
                    </div><br>
                     
-                    <button type="button" class="btn" style="background-color: #13597D; color: white; width: 150px; margin-top: 20px; border-radius: 10px">Tambah Karyawan</button>
+                    <button type="submit" class="btn" style="background-color: #13597D; color: white; width: 150px; margin-top: 20px; border-radius: 10px">Tambah Karyawan</button>
                 </div>
             </form>
         </div>

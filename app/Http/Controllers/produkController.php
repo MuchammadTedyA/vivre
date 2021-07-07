@@ -93,6 +93,17 @@ class produkController extends Controller
 
         
 
+        return redirect()->back()->with('message', 'Produk Telah Ditambahkan');
+    }
+
+    //DELETE
+
+    public function hapusProduk($id)
+    {
+        $nama_gambar = DB::table('produk')->where('id_produk', '=', $id)->first();
+        File::delete('produk_img/' . $nama_gambar->gambar);
+        DB::table('produk')->where('id_produk', '=', $id)->delete();
+
         return redirect()->back();
     }
 }

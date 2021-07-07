@@ -36,7 +36,7 @@
         <td>{{ $item ->kategori_produk }}</td>
         <td>{{ $item ->harga }}</td>
         <td><img width="150px" src="{{ url('/produk_img/'.$item->gambar) }}"></td>
-        <td style="text-align: center"><a class="btn btn-danger" href="hapusBahan/{{$item->id_produk}}" style="">Delete</a> &nbsp; <a class="btn btn-warning" href="editBahan/{{$item->id_produk}}">Edit</a></td>
+        <td style="text-align: center"><a class="btn btn-danger" href="hapusProduk/{{$item->id_produk}}" style="">Delete</a> &nbsp; <a class="btn btn-warning" href="editBahan/{{$item->id_produk}}">Edit</a></td>
     </tr>
       @endforeach
         

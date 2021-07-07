@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Produk extends Migration
+class Pengguna extends Migration
 {
     /**
      * Run the migrations.
@@ -14,17 +14,15 @@ class Produk extends Migration
     public function up()
     {
         //
-        Schema::create('produk', function (Blueprint $table) {
-            $table->char('id_produk', 5)->primary();
-            $table->string('nama_produk', 20);
-            $table->longText('deskripsi_produk', 200);
-            $table->string('kategori_produk',20);
-            $table->integer('harga');
+        Schema::create('pengguna', function (Blueprint $table) {
+            $table->char('username', 50)->primary();
+            $table->char('nik', 16);
+            $table->string('nama_pengguna', 20);
+            $table->string('password', 20);
+            $table->string('alamat',100);
+            $table->string('posisi',20);
             $table->string('gambar',250);
         });
-
-
-        
     }
 
     /**
@@ -35,6 +33,6 @@ class Produk extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('produk');
+        Schema::dropIfExists('pengguna');
     }
 }

@@ -2,6 +2,12 @@
 
 @section('isiToko')
 
+@if (Session::has('message'))
+<script>
+    alert("{!!Session::get('message')!!}");
+</script>
+@endif
+
 <div class="navAtas">
     <div class="container">
         <h3>Toko Saya</h3>

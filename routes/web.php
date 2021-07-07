@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\produkController;
+use App\Http\Controllers\karyawanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,11 @@ Route::get('/pembayaran', [PagesController::class, 'pembayaran']);
 
 
 //KARYAWAN
-Route::get('/tokoSaya/Karyawan', [PagesController::class, 'tokoSayaKaryawan']);
-Route::get('/tokoSaya/kasir', [PagesController::class, 'tokoSayaKasir']);
-Route::get('/tokoSaya/dapur', [PagesController::class, 'tokoSayaDapur']);
+Route::get('/tokoSaya/Karyawan', [karyawanController::class, 'lihatSemuaKaryawan']);
+Route::get('/tokoSaya/kasir', [karyawanController::class, 'lihatKasirKaryawan']);
+Route::get('/tokoSaya/dapur', [karyawanController::class, 'lihatDapurKaryawan']);
+
+Route::post('/tambahKaryawan', [karyawanController::class, 'tambahKaryawan']);
 
 Route::get('/tokoSaya/pengaturanAkun', [PagesController::class, 'tokoSaya']);
 
@@ -37,6 +40,8 @@ Route::get('/tokoSaya', [produkController::class, 'lihatSemuaProduk']);
 Route::get('tokoSaya/kopiMenu', [produkController::class, 'lihatKopiProduk']);
 Route::get('tokoSaya/nonKopiMenu', [produkController::class, 'lihatNonKopiProduk']);
 Route::get('tokoSaya/makanan', [produkController::class, 'lihatMakananProduk']);
+
+Route::get('tokoSaya/hapusProduk/{id}', [produkController::class, 'hapusProduk']);
 
 
 Route::post('/tambahProduk', [produkController::class, 'tambahProduk']);
