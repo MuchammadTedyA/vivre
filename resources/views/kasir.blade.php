@@ -50,28 +50,36 @@
       </div>
 
       {{-- menunya --}}
-
+     
       <div class="list">
+        
         <ul>
+          
+          
+          @foreach ($produk as $item)
           <li class="kotak-menu">
-            <a href="">
+            <a href="tambahCart/{{ $item->id_produk }}" >
               <div class="center-cropped">
-                <img src="https://lelogama.go-jek.com/cms_editor/2019/12/02/Instagram_Zeribowl.PNG" alt="gambar items">
+                <img src="{{ url('/produk_img/'.$item->gambar) }}" alt="gambar items">
               </div>
               
               <div style="padding: 10px">
-                <h6 style="text-align: left">nama produk</h6>
+                <h6 style="text-align: left">{{ $item ->nama_produk }}</h6>
                 <p style="font-size: 14px;
                 font-family: poppins;
                 
                 position: relative;
-                text-align: right;">Rp. 00,-</p>
+                text-align: right;">@currency($item->harga)</p>
               </div>
             </a>
             
   
           </li>
+          @endforeach
+          
+          
         </ul>
+        
       </div>
       
       
@@ -96,10 +104,16 @@
       <div class="col">
         <h3 style="float: right">#0192</h3>
       </div>
+
+     
     </div>
+    
+
+    
   
   
   </div>
+
    
      
  </nav>
@@ -108,10 +122,62 @@
  {{-- konten grid kanan --}}
  <div class="gridkanan">
    
-   <div class="isikanan">
-     <p>
-       
-     </p>
+   <div class="isikanan" style="padding: 20px">
+    @if (empty($cart)||count($cart) == 0)
+          Tidak Ada Penjualan
+    @else
+     <table class="table">
+      
+      
+
+      <tr>
+        <th>No</th>
+        <th>Nama Produk</th>
+        <th>Jumlah</th>
+        <th>Harga</th>
+        <th>Subtotal</th>
+        <th>&nbsp;</th>
+      </tr>
+        <?php $no=1;$grandtotal=0; ?>
+        @foreach ($cart as $item => $val)
+        <tr>
+          <?php
+          $subtotal = $val["harga_produk"] * $val["jumlah"];
+          ?>
+          <td>{{ $no++ }}</td>
+          <td>{{$val["nama_produk"]}}</td>
+          <td>{{$val["jumlah"]}}</td>
+          <td>{{$val["harga_produk"]}}</td>
+          <td>{{$subtotal}}</td>
+          <td><a class="btn btn-danger" href="hapusCart/{{$item}}" style=""><i class="bi bi-eraser-fill" style="color: white; "></i></a></td>
+          <?php 
+            $grandtotal += $subtotal;
+          ?>
+        </tr>
+        @endforeach
+
+      <table class="table" >
+        <thead style="visibility: hidden">
+          <th>Nama Produk</th>
+        <th>Jumlah</th>
+        <th>Harga</th>
+        <th>Subtotal</th>
+          <td></td>
+        </thead>
+        <tfoot >
+          <tr >
+            <td colspan="3" style="text-align: center"><b>Total</b></td>
+            <td>{{$grandtotal}}</td>
+            <td>&nbsp;</td>
+  
+          </tr>
+        </tfoot>
+      </table>
+      
+        
+      
+     </table>
+     @endif
    </div>
  </div>
 
@@ -216,7 +282,7 @@
   }
   .gridkanan{
     margin-left: 66.5%;
-   
+    
   }
   .isikiri{
     margin-top: 130px;

@@ -69,5 +69,16 @@ class karyawanController extends Controller
             return redirect('/tokoSaya/Karyawan')
             ->with('message', 'Karyawan Telah Ditambahkan');
         }
+
+        
+    }
+
+    public function hapusKaryawan($id)
+    {
+        $nama_gambar = DB::table('pengguna')->where('username', '=', $id)->first();
+        File::delete('karyawan_img/' . $nama_gambar->gambar);
+        DB::table('pengguna')->where('username', '=', $id)->delete();
+
+        return redirect()->back()->with('message', 'Karyawan Berhasil Dihapus');
     }
 }

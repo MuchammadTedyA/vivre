@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\produkController;
 use App\Http\Controllers\karyawanController;
+use App\Http\Controllers\kasirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +19,21 @@ use App\Http\Controllers\karyawanController;
 
 Route::get('/', [PagesController::class, 'login']);
 Route::get('/kitchenSystem', [PagesController::class, 'kitchenSystem']);
-Route::get('/kasir', [PagesController::class, 'kasir']);
+
 Route::get('/pembayaran', [PagesController::class, 'pembayaran']);
 
+//KASIR
+Route::get('/kasir', [kasirController::class, 'lihatSemuaProduk']);
+Route::get('/tambahCart/{id}', [kasirController::class, 'tambahCart']);
+Route::get('/hapusCart/{id}', [kasirController::class, 'hapusCart']);
 
 //KARYAWAN
 Route::get('/tokoSaya/Karyawan', [karyawanController::class, 'lihatSemuaKaryawan']);
 Route::get('/tokoSaya/kasir', [karyawanController::class, 'lihatKasirKaryawan']);
 Route::get('/tokoSaya/dapur', [karyawanController::class, 'lihatDapurKaryawan']);
+
+Route::get('tokoSaya/hapusKaryawan/{id}', [karyawanController::class, 'hapusKaryawan']);
+
 
 Route::post('/tambahKaryawan', [karyawanController::class, 'tambahKaryawan']);
 

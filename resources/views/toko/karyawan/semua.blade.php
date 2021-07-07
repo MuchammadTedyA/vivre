@@ -39,7 +39,7 @@
               <td>{{ $item ->alamat }}</td>
               <td>{{ $item ->posisi }}</td>
               <td><img width="150px" src="{{ url('/karyawan_img/'.$item->gambar) }}"></td>
-              <td style="text-align: center"><a class="btn btn-danger" href="hapusBahan/{{$item->username}}" style="">Delete</a> &nbsp; <a class="btn btn-warning" href="editBahan/{{$item->username}}">Edit</a></td>
+              <td style="text-align: center"><a class="btn btn-danger" href="hapusKaryawan/{{$item->username}}" style="">Delete</a> &nbsp; <a class="btn btn-warning" href="editBahan/{{$item->username}}">Edit</a></td>
           </tr>
             @endforeach
               
