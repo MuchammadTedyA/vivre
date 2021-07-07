@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="navAtas">
-    <div class="container ">
+{{-- <div class="navAtas">
+    <div class="container">
         <h3>Toko Saya</h3>
     </div>
     
@@ -16,16 +16,16 @@
     <a class="menuToko" href="{{ url('/tokoSaya/Karyawan') }}">Karyawan</a>
 </div>
 
-<div class="isiToko">
+<div class="isiToko"> --}}
   @yield('isiToko')
     
-</div>
+{{-- </div>
 
 <style>
   .isiToko{
     position: relative;
     left: 130px;
-    top: 0px;
+    margin-top: 120px;
     width: 89.6%;
   }
     .navSamping {
@@ -65,10 +65,13 @@
 
       
     .navAtas{
-        position: relative;
+      overflow: hidden;
+        position: fixed;
         height: 100px;
+        width: 100%;
+        top: 0;
         background-color: white;
-
+        
     }
     .navAtas h3{
         margin: 0;
@@ -78,6 +81,6 @@
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
-</style>
+</style> --}}
 
 @endsection

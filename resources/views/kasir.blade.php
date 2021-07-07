@@ -88,7 +88,16 @@
 <nav class="navbar navkanan gridkanan">
   <div class="container">
 
-  <h3>Pesanan Baru</h3>
+    <div class="row" style="width: 100%">
+      <div class="col">
+        <h3>Pesanan Baru </h3>
+        
+      </div>
+      <div class="col">
+        <h3 style="float: right">#0192</h3>
+      </div>
+    </div>
+  
   
   </div>
    
@@ -100,7 +109,9 @@
  <div class="gridkanan">
    
    <div class="isikanan">
-    
+     <p>
+       
+     </p>
    </div>
  </div>
 

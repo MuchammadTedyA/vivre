@@ -8,6 +8,11 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+
     <title>Cashier System @yield('title')</title>
     {{-- <script>
       /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
@@ -38,6 +43,10 @@
         overflow-x: hidden; /* Disable horizontal scroll */
         padding-top: 10px; /* Place content 60px from the top */
         /* transition: 0.5s; 0.5 second transition effect to slide in the sidenav */
+      }
+      .sidenav>.active>a{
+        background-color: #13597D;
+        color: #ffffff;
       }
 
       /* The navigation menu links */
@@ -91,7 +100,7 @@
         height: 100px;
         width: 100px;
         margin: auto;
-        color: #818181;
+        color: #13597D;
         border: #13597D;
         border-radius: 20px;
         margin-bottom: 10px;
@@ -130,11 +139,20 @@
       </div> --}}
       <div id="" class="sidenav">
         {{-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> --}}
+        <div class="{{ Request::segment(1)==='kasir' ? 'active' : '' }}">
+          <a class="menu" href="{{ url('kasir') }}"><span class="text-center"><i class="bi bi-cart-fill" style="font-size: 2rem"></i><br>Pesanan Baru</span></a>
+        </div>
+        <div class="{{ Request::segment(1)==='pembayaran' ? 'active' : '' }}">
+          <a class="menu" href="{{ url('pembayaran') }}"><img src="" alt="icon"><br>Pembayaran</a>
+        </div>
+        <div class="{{ Request::is('riwayat') ? 'active' : '' }}">
+          <a class="menu" href="#"><i class="bi bi-clock-history" style="font-size: 2rem"></i><br>Riwayat</a>
+        </div>
+        <div class="{{ Request::segment(1)==='tokoSaya' ? 'active' : '' }}">
+          <a class="menu" href="{{ url('tokoSaya') }}"><i class="bi bi-shop-window" style="font-size: 2rem"></i><br>Toko Saya</a>
+        </div>
         
-        <a class="menu" href="{{ url('/kasir') }}"><span class="text-center"><img src="" alt="icon"><br>Pesanan Baru</span></a>
-        <a class="menu" href="{{ url('/pembayaran') }}"><img src="" alt="icon"><br>Pembayaran</a>
-        <a class="menu" href="#"><img src="" alt="icon"><br>Riwayat</a>
-        <a class="menu" href="{{ url('/tokoSaya') }}"><img src="" alt="icon"><br>Toko Saya</a>
+        
         <a class="logout teks" href="#">Logout</a>
         
       </div>

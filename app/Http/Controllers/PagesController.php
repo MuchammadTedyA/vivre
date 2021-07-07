@@ -20,10 +20,31 @@ class PagesController extends Controller
     public function pembayaran(){
         return view('kasirPembayaran');
     }
-    public function tokoSaya(){
-        return view('toko.menu');
-    }
+
+   //KARYAWAN
     public function tokoSayaKaryawan(){
-        return view('toko.karyawan');
+        return view('toko.karyawan.semua');
+    }
+
+    public function tokoSayaKasir(){
+        return view('toko.karyawan.kasir');
+    }
+
+    public function tokoSayaDapur(){
+        return view('toko.karyawan.dapur');
+    }
+
+
+
+    //TOKO SAYA PRODUK
+    public function tokoSaya(){
+        return view('toko.menu.semua');
+    }
+
+    public function kopiMenu(){
+        return view('toko.menu.kopi');
+    }
+    public function nonKopiMenu(){
+        return view('toko.menu.nonKopi');
     }
 }

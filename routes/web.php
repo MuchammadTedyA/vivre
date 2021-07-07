@@ -18,6 +18,17 @@ Route::get('/', [PagesController::class, 'login']);
 Route::get('/kitchenSystem', [PagesController::class, 'kitchenSystem']);
 Route::get('/kasir', [PagesController::class, 'kasir']);
 Route::get('/pembayaran', [PagesController::class, 'pembayaran']);
-Route::get('/tokoSaya', [PagesController::class, 'tokoSaya']);
+
+
+//KARYAWAN
 Route::get('/tokoSaya/Karyawan', [PagesController::class, 'tokoSayaKaryawan']);
+Route::get('/tokoSaya/kasir', [PagesController::class, 'tokoSayaKasir']);
+Route::get('/tokoSaya/dapur', [PagesController::class, 'tokoSayaDapur']);
+
 Route::get('/tokoSaya/pengaturanAkun', [PagesController::class, 'tokoSaya']);
+
+
+//TOKO SAYA PRODUK
+Route::get('/tokoSaya', [PagesController::class, 'tokoSaya']);
+Route::get('tokoSaya/kopiMenu', [PagesController::class, 'kopiMenu']);
+Route::get('tokoSaya/nonKopiMenu', [PagesController::class, 'nonKopiMenu']);
