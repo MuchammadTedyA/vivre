@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\produkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,15 @@ Route::get('/tokoSaya/dapur', [PagesController::class, 'tokoSayaDapur']);
 
 Route::get('/tokoSaya/pengaturanAkun', [PagesController::class, 'tokoSaya']);
 
+//TOKO SAYA BAHAN BAKU
+Route::get('/tokoSaya/bahanBaku', [PagesController::class, 'tokoSayaBahanBaku']);
+
 
 //TOKO SAYA PRODUK
-Route::get('/tokoSaya', [PagesController::class, 'tokoSaya']);
-Route::get('tokoSaya/kopiMenu', [PagesController::class, 'kopiMenu']);
-Route::get('tokoSaya/nonKopiMenu', [PagesController::class, 'nonKopiMenu']);
+Route::get('/tokoSaya', [produkController::class, 'lihatSemuaProduk']);
+Route::get('tokoSaya/kopiMenu', [produkController::class, 'lihatKopiProduk']);
+Route::get('tokoSaya/nonKopiMenu', [produkController::class, 'lihatNonKopiProduk']);
+Route::get('tokoSaya/makanan', [produkController::class, 'lihatMakananProduk']);
+
+
+Route::post('/tambahProduk', [produkController::class, 'tambahProduk']);

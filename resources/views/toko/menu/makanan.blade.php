@@ -6,13 +6,13 @@
         <a class="nav-link "  style="color: #0b3042" href="{{ ('/tokoSaya') }}">Semua</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{{ ('/tokoSaya/kopiMenu') }}">Kopi</a>
+        <a class="nav-link " style="color: #0b3042" aria-current="page" href="{{ ('/tokoSaya/kopiMenu') }}">Kopi</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" style="color: #0b3042" href="{{ ('/tokoSaya/nonKopiMenu') }}">Non Kopi</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" style="color: #0b3042" href="{{ ('/tokoSaya/makanan') }}">Makanan</a>
+        <a class="nav-link active" href="{{ ('/tokoSaya/makanan') }}">Makanan</a>
       </li>
 </ul>
 <div style="background-color: white">

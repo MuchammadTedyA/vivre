@@ -17,13 +17,14 @@
         <a class="menuToko" href="{{ url('/tokoSaya') }}">Menu</a>
     </div>
     <div>
-        <a class="menuToko" href="">Pengaturan Akun</a>
+        <a class="menuToko" href="{{ url('/tokoSaya/bahanBaku') }}">Bahan Baku</a>
     </div>
     <div>
         <a class="menuToko" href="{{ url('/tokoSaya/Karyawan') }}">Karyawan</a>
     </div>
     
 </div>
+
 
 <div class="isiToko1">
   
@@ -36,48 +37,54 @@
                     </div>
                     <button type="button" class="btn col-sm-2" style="background-color: #13597D; color: white; border-radius: 10px">Go</button>
                 </div>
+                {!! Form::open(array('method'=>'POST','url'=>'tambahProduk', 'enctype'=>'multipart/form-data')) !!}
                 <form class="ma">
                     <div class="form-group margin">
-                      <label for="formGroupExampleInput">Nama Menu</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                      <label for="formGroupExampleInput">Nama Produk</label>
+                      <input type="text" name="namaProduk" class="form-control" id="formGroupExampleInput" placeholder="" required>
                     </div>
                     <div class="form-group margin">
                       <label for="formGroupExampleInput2">Deskripsi</label>
-                      <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
+                      <textarea name="deskripsiProduk" type="area" class="form-control" id="formGroupExampleInput2" placeholder=""></textarea>
                     </div>
                     <div class="form-group margin">
-                        <label for="formGroupExampleInput2">Kategori</label>
-                        <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
+                        <label for="validationCustom04" class="form-label">Kategori</label>
+                        <select class="form-select" aria-label="Default select example" name="kategoriProduk" required>
+                            <option selected disabled value="">--Pilih Kategori--</option>
+                            <option value="kopi">Kopi</option>
+                            <option value="nonKopi">Non-Kopi</option>
+                            <option value="makanan">Makanan</option>
+                          </select>
                     </div>
                     <div class="form-group margin">
                         <label for="formGroupExampleInput2">Harga</label>
-                        <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
+                        <input name="hargaProduk" type="area" class="form-control" id="formGroupExampleInput2" placeholder="" required>
                     </div>
-                </form>
+                
             </div>
             
                 {{-- <hr class="new1"> --}}
     
             
             
-            <div class="col text-center">
+            <div class="col-sm-3  text-center" >
 
                 
-                <button type="button" class="btn" style="background-color: #13597D; color: white; width: 150px;border-radius: 10px">Tambah</button>
-                <div class="container foto">
-                    <div style="margin: 0;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    -ms-transform: translate(-50%, -50%);
-                    transform: translate(-50%, -50%);">
-                    <p style="">unggah foto</p>
-                    </div>
+                
+                <div class="row pe-4 ps-4 pt-4 pb-4" style="background: #fff;border-radius: 10px; height: 340px; margin-top: 30px;">
                     
-                </div>
-                <button type="button" class="btn" style="background-color: #13597D; color: white; width: 150px; margin-top: 20px; border-radius: 10px">Tambah Menu</button>
+                    <p>
+                         Masukan Gambar Produk
+                    </p>
+                    <input class="mb-2" type="file" name="file" required>
+                         
+               </div><br>
+                
+                <button type="submit" class="btn" style="background-color: #13597D; color: white; width: 150px; margin-top: 20px; border-radius: 10px">Tambah Produk</button>
             </div>
+        </form>
         </div>
+        {!! Form::close() !!}
         <div class="container">
             <hr class="new1">
     
@@ -89,11 +96,11 @@
     </div>
     <style>
         .foto{
-            position: relative;
+            
             margin: auto;
             margin-top: 50px;
             height: 260px;
-            width: 200px;
+            width: 220px;
             background-color: white;
             border-radius: 15px;
         }
@@ -127,7 +134,7 @@
     
     margin-left: 280px;
     margin-top: 120px;
-    width: ;
+    width: 78%;
   }
     .navSamping {
         height: 100%; /* 100% Full-height */

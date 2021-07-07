@@ -2,11 +2,10 @@
 
 @section('isiToko')
 
-
 <div class="navAtas">
-    
+    <div class="container">
         <h3>Toko Saya</h3>
-    
+    </div>
     
 </div >
 
@@ -14,18 +13,20 @@
     <div>
         <a class="menuToko" href="">Jam Operasional</a>
     </div>
-    <div >
+    <div>
         <a class="menuToko" href="{{ url('/tokoSaya') }}">Menu</a>
     </div>
-    <div>
+    <div  class="active">
         <a class="menuToko" href="{{ url('/tokoSaya/bahanBaku') }}">Bahan Baku</a>
     </div>
-    <div class="active">
+    <div>
         <a class="menuToko" href="{{ url('/tokoSaya/Karyawan') }}">Karyawan</a>
     </div>
+    
 </div>
 
 <div class="isiToko1">
+  
     <div class="isiToko">
         <div class="row">
             <div class="col-sm-8">
@@ -35,72 +36,70 @@
                     </div>
                     <button type="button" class="btn col-sm-2" style="background-color: #13597D; color: white; border-radius: 10px">Go</button>
                 </div>
-                {!! Form::open(array('method'=>'POST','url'=>'tambahKaryawan', 'enctype'=>'multipart/form-data')) !!}
                 <form class="ma">
                     <div class="form-group margin">
-                        <label for="formGroupExampleInput">NIK</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                      </div>
-                    <div class="form-group margin">
-                      <label for="formGroupExampleInput">Nama Karyawan</label>
+                      <label for="formGroupExampleInput">Nama Bahan Baku</label>
                       <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
                     </div>
                     <div class="form-group margin">
-                        <label for="formGroupExampleInput2">Password</label>
-                        <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="">
+                      <label for="formGroupExampleInput2">Deskripsi</label>
+                      <textarea type="area" class="form-control" id="formGroupExampleInput2" placeholder=""></textarea>
                     </div>
                     <div class="form-group margin">
-                      <label for="formGroupExampleInput2">Alamat Karyawan</label>
-                      <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
-                    </div>
-                    <div class="form-group margin">
-                        <label for="formGroupExampleInput2">Kode Karyawan</label>
+                        <label for="formGroupExampleInput2">Kategori</label>
                         <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
                     </div>
                     <div class="form-group margin">
-                        <label for="formGroupExampleInput2">Posisi</label>
+                        <label for="formGroupExampleInput2">Jumlah</label>
                         <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
                     </div>
-                
+                    <div class="form-group margin">
+                        <label for="formGroupExampleInput2">Satuan</label>
+                        <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
+                    </div>
+                    <div class="form-group margin">
+                        <label for="formGroupExampleInput2">Harga</label>
+                        <input type="area" class="form-control" id="formGroupExampleInput2" placeholder="">
+                    </div>
+                </form>
             </div>
             
                 {{-- <hr class="new1"> --}}
     
             
             
-                <div class="col-sm-3  text-center" >
+            <div class="col-sm-3  text-center" >
 
                 
                 
-                    <div class="row pe-4 ps-4 pt-4 pb-4" style="background: #fff;border-radius: 10px; height: 340px; margin-top: 100px">
-                        
-                        <p>
-                             Masukan Foto Karyawan
-                        </p>
-                        <input class="mb-2" type="file" name="file">
-                             
-                   </div><br>
+                <div class="row pe-4 ps-4 pt-4 pb-4" style="background: #fff;border-radius: 10px; height: 340px; margin-top: 100px;">
                     
-                    <button type="button" class="btn" style="background-color: #13597D; color: white; width: 150px; margin-top: 20px; border-radius: 10px">Tambah Karyawan</button>
-                </div>
-            </form>
+                    <p>
+                         Masukan Gambar Produk
+                    </p>
+                    <input class="mb-2" type="file" name="file">
+                         
+               </div><br>
+                
+                <button type="button" class="btn" style="background-color: #13597D; color: white; width: 150px; margin-top: 20px; border-radius: 10px">Tambah Menu</button>
+            </div>
         </div>
-        {!! Form::close() !!}
         <div class="container">
             <hr class="new1">
-            @yield('tabel')
+    
             
+            @yield('tabel')
     
         </div>
         
     </div>
     <style>
         .foto{
-            position: relative;
+            
             margin: auto;
             margin-top: 50px;
             height: 260px;
-            width: 200px;
+            width: 220px;
             background-color: white;
             border-radius: 15px;
         }
@@ -116,8 +115,7 @@
        hr.new1 {
       border-top: 4px solid #0b3042;
     }
-    </style>
-    
+    </style>  
 </div>
 <script>
     $(document).ready(function () {
@@ -130,7 +128,6 @@
         });
     });
 </script>
-
 <style>
   .isiToko1{
     
@@ -153,6 +150,7 @@
         background-color: white; /* Black*/
         color: #13597D
       }
+      
       .navSamping a {
         
         color: white;
@@ -181,11 +179,12 @@
       
     .navAtas{
       overflow: hidden;
+      background-color: white;
         position: fixed;
         height: 100px;
         width: 100%;
         top: 0;
-        background-color: white;
+        
         
     }
     .navAtas h3{
@@ -198,8 +197,6 @@
     }
 </style>
 
-
 {{--  --}}
-
 
 @endsection

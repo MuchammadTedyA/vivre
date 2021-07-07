@@ -35,6 +35,10 @@ class PagesController extends Controller
     }
 
 
+    //TOKO SAYA BAHAN BAKU
+    public function tokoSayaBahanBaku(){
+        return view('toko.bahanBaku.semua');
+    }
 
     //TOKO SAYA PRODUK
     public function tokoSaya(){
