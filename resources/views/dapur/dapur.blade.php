@@ -116,9 +116,9 @@
     }
     .dikerjakan{
     width: 80px;
-    background-color: #ffc524; 
+    background-color: #ffe900; 
     border-radius: 10px; 
-    border:#ffc524 solid 2px;
+    border:#ffe900 solid 2px;
     color: white;
     }
     .anu>.dikerjakan:hover{

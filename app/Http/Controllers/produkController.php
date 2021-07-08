@@ -101,7 +101,7 @@ class produkController extends Controller
     public function hapusProduk($id)
     {
         $nama_gambar = DB::table('produk')->where('id_produk', '=', $id)->first();
-        File::delete('produk_img/' . $nama_gambar->gambar);
+        File::delete('produk_img/'.$nama_gambar->gambar);
         DB::table('produk')->where('id_produk', '=', $id)->delete();
 
         return redirect()->back();

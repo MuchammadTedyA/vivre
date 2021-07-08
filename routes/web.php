@@ -72,3 +72,14 @@ Route::get('/produk', [dapurController::class, 'produk']);
 Route::get('produkTersedia/{id}', [dapurController::class, 'produkTersedia']);
 
 Route::get('produkHabis/{id}', [dapurController::class, 'produkHabis']);
+
+Route::get('/bahanBaku', [dapurController::class, 'lihatBahanBaku']);
+
+Route::get('/halamanTambahBahan', [PagesController::class, 'halamanTambahBahan']);
+
+Route::get('/barangMasuk/{id}', [dapurController::class, 'barangMasuk']);
+
+Route::post('/barangMasuk', [dapurController::class, 'simpanBarangMasuk']);
+
+Route::post('/buatBahan', [dapurController::class, 'buatBahan']);
+

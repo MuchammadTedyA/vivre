@@ -10,8 +10,16 @@ class PagesController extends Controller
         return view('login');
     }
 
+    public function halamanTambahBahan(){
+        return view('dapur.bahan.tambahBahan');
+    }
+
     public function kitchenSystem(){
         return view('dapur.dapur');
+    }
+
+    public function bahanBaku(){
+        return view('dapur.bahanBaku');
     }
 
     public function produk(){
