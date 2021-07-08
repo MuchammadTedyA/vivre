@@ -22,12 +22,15 @@
     <div class="active">
         <a class="menuToko" href="{{ url('/tokoSaya') }}">Menu</a>
     </div>
+    @if (session()->get('posisi')=='manajer')
     <div>
         <a class="menuToko" href="{{ url('/tokoSaya/bahanBaku') }}">Bahan Baku</a>
     </div>
     <div>
         <a class="menuToko" href="{{ url('/tokoSaya/Karyawan') }}">Karyawan</a>
     </div>
+    @endif
+    
     
 </div>
 

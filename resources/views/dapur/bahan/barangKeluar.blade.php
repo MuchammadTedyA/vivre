@@ -24,7 +24,7 @@
             <label for="formGroupExampleInput2">Jumlah</label>
             <div class="row">
                 <div class="col-9">
-                    <input name="jumlahBahan" type="number" class="form-control" id="formGroupExampleInput2" placeholder="" required>
+                    <input name="jumlahBahan" type="number" class="form-control" id="formGroupExampleInput2" placeholder="" max="{{ $bahan->jumlah }}" required>
                 </div>
                 <div class="col">
                     {{ $bahan->satuan }}

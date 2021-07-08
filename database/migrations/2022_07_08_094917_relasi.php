@@ -24,6 +24,17 @@ class Relasi extends Migration
             ->onUpdate('cascade')->onDelete('cascade');
 
         });
+
+        Schema::table('bahan_keluar', function (Blueprint $table) {
+            $table->string('username', 50)->unsigned()->change();
+            $table->foreign('username')->references('username')->on('pengguna')
+            ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->string('id_bahan', 6)->unsigned()->change();
+            $table->foreign('id_bahan')->references('id_bahan')->on('bahan')
+            ->onUpdate('cascade')->onDelete('cascade');
+
+        });
     }
 
     /**

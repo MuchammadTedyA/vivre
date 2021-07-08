@@ -86,7 +86,8 @@ class produkController extends Controller
             'deskripsi_produk' =>request() ->get('deskripsiProduk'),
             'kategori_produk' => request()->get('kategoriProduk'),
             'harga' => request()->get('hargaProduk'),
-            'gambar' => $nama_file
+            'gambar' => $nama_file,
+            'status' => 'tersedia'
         );
 
         DB::table('produk')->insert($data);

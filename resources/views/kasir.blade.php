@@ -156,28 +156,32 @@
         </tr>
         @endforeach
 
-      <table class="table" >
-        <thead style="visibility: hidden">
-          <th>Nama Produk</th>
-        <th>Jumlah</th>
-        <th>Harga</th>
-        <th>Subtotal</th>
-          <td></td>
-        </thead>
-        <tfoot >
-          <tr >
-            <td colspan="3" style="text-align: center"><b>Total</b></td>
-            <td>{{$grandtotal}}</td>
-            <td>&nbsp;</td>
-  
-          </tr>
-        </tfoot>
-      </table>
+      
       
         
       
      </table>
+     <table class="table" >
+      <thead style="visibility: hidden">
+        <th>Nama Produk</th>
+      <th>Jumlah</th>
+      <th>Harga</th>
+      <th>Subtotal</th>
+        <td></td>
+      </thead>
+      <tfoot >
+        <tr >
+          <td colspan="3" style="text-align: center"><b>Total</b></td>
+          <td>{{$grandtotal}}</td>
+          <td>&nbsp;</td>
+
+        </tr>
+      </tfoot>
+    </table>
      
+     <a class="btn bayar" href="">
+       Bayar
+     </a>
      @endif
    </div>
  </div>
@@ -186,6 +190,23 @@
  {{-- CSS --}}
 
 <style>
+  .bayar{
+        position: absolute;
+        bottom: 130px;
+        width: 90%;
+        margin: auto;
+        color: #f1f1f1;
+        background-color: #13597D;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        
+      }
+
+      .bayar:hover{
+        color: #13597D;
+        background-color: white;
+        border: #13597D solid 1px
+      }
 .center-cropped {
   width: 150px;
   height: 100px;
@@ -197,8 +218,7 @@
   left: 50%;
   position: relative;
   object-fit: cover;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  border-radius: 10px 50px;
   transform: translateX(-50%);
 }
   .list{
@@ -217,7 +237,7 @@
     /* margin: auto; */
     color: black;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 20px 50px 20px 20px;
     margin-bottom: 30px;
     margin-top: 10px;
     margin-left: 30px;
@@ -230,7 +250,7 @@
     height: 180px;
     width: 150px;
     color: #13597D;
-    border-radius: 20px;
+    border-radius: 20px 50px 20px 20px;
   }
   .kotak-menu a:hover{
     color: #f1f1f1;

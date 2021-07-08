@@ -89,11 +89,17 @@ class dapurController extends Controller
     }
 
 
-    //BARANG MASUK
+    //BARANG MASUK KELUAR
     public function barangMasuk($id){
         $data = DB::table('bahan')
         ->where('id_bahan','=', $id)->first();
         return view('dapur.bahan.barangMasuk')->with('bahan', $data);
+        
+    }
+    public function barangKeluar($id){
+        $data = DB::table('bahan')
+        ->where('id_bahan','=', $id)->first();
+        return view('dapur.bahan.barangKeluar')->with('bahan', $data);
         
     }
 
@@ -145,5 +151,53 @@ class dapurController extends Controller
         DB::table('bahan_masuk')->insert($data_masuk);
 
         return redirect('/bahanBaku')->with('message', 'Berhasil Menambah Data Barang Masuk');
+    }
+
+    public function simpanBarangKeluar(Request $request){
+        $keluar = request()->get('jumlahBahan');
+        $id_bahan= request()->get('id');
+        $username = request()->session()->get('username');
+
+        
+        $bahan = DB::table('bahan')
+        ->where('id_bahan','=', $id_bahan)->first();
+
+        $count = DB::table('bahan_keluar')
+            ->select(DB::raw('max(id_keluar)  as id_keluar'))
+            ->get();
+        foreach ($count as $item) {
+            $ed = intval(substr($item->id_keluar, 2)) + 1;
+            
+        }
+
+        if ($ed < 10) {
+            $ed = 'KL000' . $ed;
+        } else if ($ed >= 10 && $ed < 100) {
+            $ed = 'KL00' . $ed;
+        } else if ($ed >= 100 && $ed < 1000){
+            $ed = 'KL0' . $ed;
+        }else{
+            $ed = 'KL' . $ed;
+        }
+
+        $totJum = 0;
+        $totJum = $bahan->jumlah- $keluar;
+
+        $data_keluar = array(
+            'id_keluar' => $ed,
+            'id_bahan' => $id_bahan,
+            'username' =>$username,
+            'jumlah_keluar' => request()->get('jumlahBahan'),
+            'tanggal_keluar' => date("Y-m-d")
+        );
+
+        $data_bahan = array(
+            'jumlah' => $totJum
+        );
+
+        DB::table('bahan')->where('id_bahan', '=', request()->get('id'))->update($data_bahan);
+        DB::table('bahan_keluar')->insert($data_keluar);
+
+        return redirect('/bahanBaku')->with('message', 'Berhasil Memasukkan Data Barang Keluar');
     }
 }
