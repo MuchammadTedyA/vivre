@@ -153,7 +153,7 @@
         </div>
         
         
-        <a class="logout teks" href="#">Logout</a>
+        <a class="logout teks" href="{{ ('/logout') }}">Logout</a>
         
       </div>
           

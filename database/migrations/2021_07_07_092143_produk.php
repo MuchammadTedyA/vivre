@@ -21,6 +21,7 @@ class Produk extends Migration
             $table->string('kategori_produk',20);
             $table->integer('harga');
             $table->string('gambar',250);
+            $table->string('status',20);
         });
 
 

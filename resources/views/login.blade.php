@@ -16,7 +16,7 @@
         margin:0 auto;
         width: 200px; //or whatever
     }
-    judul{
+    .judul{
       position:absolute;
       height: 51px;
       left: 365px;
@@ -26,29 +26,53 @@
       text-align:center
       color:white;
     }
+    .login{
+
+    }
+    .login button{
+      color: #13597D;
+
+    }
+
+    .login button:hover{
+      color: white;
+      background-color: #13597D;
+      border: white solid 1px;
+    }
     </style>
     
   </head>
   <body style="background-color: #13597D;">
+    @if (Session::has('message'))
+    <script>
+        alert("{!!Session::get('message')!!}");
+    </script>
+    @endif
     <div class="container">
     <br>
     
         <img src="././img/Logo_Vivre.png" alt="Logo Vivre" width="300" style="text-align: center; display: block; margin-left: auto; margin-right: auto">
         <br>
+        
         <div class="text-center"><h1 style="font-family:poppins; color:white">Vivre+ System</h1>
         <br>
         </div>
+        {!! Form::open(array('method'=>'POST','url'=>'/login')) !!}
         <div class="form-floating mb-3" style='width: 50%; margin: auto'>
-            <input type="email" class="form-control" id="floatingInput" placeholder="Username">
+            <input name="username" type="text" class="form-control" id="floatingInput" placeholder="Username" required>
             <label for="floatingInput">Username</label>
         </div>
         <div class="form-floating" style='width: 50%; margin:auto'>
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
             <label for="floatingPassword">Password</label>
         </div>
-        <div style="margin-top:15px; margin-left:auto; margin-right: auto" class="text-center">
-            <a type="button" class="btn btn-light btn-lg" onmouseover="this.style.backgroundColor='#13597D'" onmouseout="this.style.backgroundColor='white'" href="{{ url('/kitchenSystem') }}"><div style="color: #13597D; width:200px; height: 35px; display: flex; justify-content: center;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#13597D'">Login</div></a>
+        <div style="margin-top:15px; margin-left:auto; margin-right: auto" class="text-center login">
+            
+            <button type="submit" class="btn btn-light btn-lg">
+              Login
+            </button>
         </div>
+        {!! Form::close() !!}
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->

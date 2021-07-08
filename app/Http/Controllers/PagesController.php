@@ -11,7 +11,11 @@ class PagesController extends Controller
     }
 
     public function kitchenSystem(){
-        return view('kitchenSystem');
+        return view('dapur.dapur');
+    }
+
+    public function produk(){
+        return view('dapur.produk');
     }
 
     public function kasir(){

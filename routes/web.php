@@ -5,6 +5,8 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\produkController;
 use App\Http\Controllers\karyawanController;
 use App\Http\Controllers\kasirController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\dapurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +19,17 @@ use App\Http\Controllers\kasirController;
 |
 */
 
-Route::get('/', [PagesController::class, 'login']);
-Route::get('/kitchenSystem', [PagesController::class, 'kitchenSystem']);
+
+//LOGIN
+Route::get('/', [loginController::class, 'tampilLogin']);
+Route::post('/login', [loginController::class, 'login']);
+
+//LOGOUT
+Route::get('/logout', [loginController::class, 'logout']);
+
+
+//////
+Route::get('/dapur', [PagesController::class, 'kitchenSystem']);
 
 Route::get('/pembayaran', [PagesController::class, 'pembayaran']);
 
@@ -53,3 +64,11 @@ Route::get('tokoSaya/hapusProduk/{id}', [produkController::class, 'hapusProduk']
 
 
 Route::post('/tambahProduk', [produkController::class, 'tambahProduk']);
+
+////////////////////// DAPUR INI!!!!!!!!!!!!!!!!! /////
+
+Route::get('/produk', [dapurController::class, 'produk']);
+
+Route::get('produkTersedia/{id}', [dapurController::class, 'produkTersedia']);
+
+Route::get('produkHabis/{id}', [dapurController::class, 'produkHabis']);
