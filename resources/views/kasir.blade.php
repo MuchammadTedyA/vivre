@@ -156,7 +156,7 @@
    
    <div class="isikanan" style="padding: 20px">
     @if (empty($cart)||count($cart) == 0)
-          Tidak Ada Penjualan
+          <h5 class="text-center" style="color: red">Tidak Ada Penjualan</h5> 
     @else
      <table class="table">
       
