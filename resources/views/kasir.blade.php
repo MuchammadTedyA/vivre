@@ -1,7 +1,11 @@
 @extends('layout.main')
 
 @section('content')
-
+@if (Session::has('message'))
+<script>
+    alert("{!!Session::get('message')!!}");
+</script>
+@endif
 <div class="grid">
   
 </div>
@@ -24,7 +28,7 @@
     <div class="isikiri">
       {{-- kategori --}}
 
-      <div class="list">
+      {{-- <div class="list">
         <ul>
           <li class="kotak">
               <a href="">
@@ -47,7 +51,7 @@
             </a>
           </li>
         </ul>
-      </div>
+      </div> --}}
 
       {{-- menunya --}}
      
@@ -57,8 +61,10 @@
           
           
           @foreach ($produk as $item)
+
+          @if ($item->status == 'tersedia')
           <li class="kotak-menu">
-            <a href="tambahCart/{{ $item->id_produk }}" >
+            <a class="" href="tambahCart/{{ $item->id_produk }}" >
               <div class="center-cropped">
                 <img src="{{ url('/produk_img/'.$item->gambar) }}" alt="gambar items">
               </div>
@@ -75,6 +81,29 @@
             
   
           </li>
+          @endif
+          @if ($item->status == 'habis')
+          <li class="kotak-menu">
+          <a class="isDisabled" href="tambahCart/{{ $item->id_produk }}" >
+            <div class="center-cropped">
+              <img src="{{ url('/produk_img/'.$item->gambar) }}" alt="gambar items">
+            </div>
+            
+            <div style="padding: 10px">
+              <h6 style="text-align: left">{{ $item ->nama_produk }} (Kosong)</h6>
+              <p style="font-size: 14px;
+              font-family: poppins;
+              
+              position: relative;
+              text-align: right;">@currency($item->harga)</p>
+            </div>
+          </a>
+          
+
+        </li>
+          @endif
+
+          
           @endforeach
           
           
@@ -93,6 +122,8 @@
   </div>
  
 {{-- grid kanan --}}
+
+
 <nav class="navbar navkanan gridkanan">
   <div class="container">
 
@@ -102,7 +133,7 @@
         
       </div>
       <div class="col">
-        <h3 style="float: right">#0192</h3>
+        <h3 style="float: right"></h3>
       </div>
 
      
@@ -121,6 +152,7 @@
 
  {{-- konten grid kanan --}}
  <div class="gridkanan">
+  {!! Form::open(array('method'=>'POST','url'=>'bayar', 'enctype'=>'multipart/form-data')) !!}
    
    <div class="isikanan" style="padding: 20px">
     @if (empty($cart)||count($cart) == 0)
@@ -146,7 +178,7 @@
           ?>
           <td>{{ $no++ }}</td>
           <td>{{$val["nama_produk"]}}</td>
-          <td>{{$val["jumlah"]}}</td>
+          <td><a href="kurangJumlah/{{$item}}"><i class="bi bi-dash-circle-fill"></i></a>{{$val["jumlah"]}} <a href="tambahJumlah/{{$item}}"><i class="bi bi-plus-circle-fill"></i></a></td>
           <td>{{$val["harga_produk"]}}</td>
           <td>{{$subtotal}}</td>
           <td><a class="btn btn-danger" href="hapusCart/{{$item}}" style=""><i class="bi bi-eraser-fill" style="color: white; "></i></a></td>
@@ -156,6 +188,7 @@
         </tr>
         @endforeach
 
+        <input type="hidden" id="total" name="total" value="{{ $grandtotal }}">
       
       
         
@@ -172,24 +205,34 @@
       <tfoot >
         <tr >
           <td colspan="3" style="text-align: center"><b>Total</b></td>
-          <td>{{$grandtotal}}</td>
+          <td>@currency($grandtotal)</td>
           <td>&nbsp;</td>
 
         </tr>
       </tfoot>
     </table>
      
-     <a class="btn bayar" href="">
+     <a class="btn bayar" href="bayar">
        Bayar
      </a>
      @endif
    </div>
  </div>
+ {!! Form::close() !!}
 
 
  {{-- CSS --}}
 
 <style>
+
+.isDisabled {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
+  pointer-events: none;
+}
+
   .bayar{
         position: absolute;
         bottom: 130px;

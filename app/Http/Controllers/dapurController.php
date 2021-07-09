@@ -103,6 +103,13 @@ class dapurController extends Controller
         
     }
 
+    public function pesananSiap($id){
+        $data = array('status' => 'pesanan siap');
+        DB::table('penjualan')->where('id_penjualan','=', $id)
+        ->update($data);
+        return redirect('/dapur');
+    }
+
     public function simpanBarangMasuk(Request $request){
         $masuk = request()->get('jumlahBahan');
         $id_bahan= request()->get('id');
@@ -199,5 +206,15 @@ class dapurController extends Controller
         DB::table('bahan_keluar')->insert($data_keluar);
 
         return redirect('/bahanBaku')->with('message', 'Berhasil Memasukkan Data Barang Keluar');
+    }
+
+    public function lihatDapur(){
+        $penjualan= DB::table('penjualan')->get();
+        $data = DB::table('detail_penjualan')
+        ->join('produk', 'detail_penjualan.id_produk', '=', 'produk.id_produk')
+        ->join('penjualan', 'detail_penjualan.id_penjualan', '=', 'penjualan.id_penjualan')
+        ->where('penjualan.status', '=', 'dikerjakan')
+        ->get();
+        return view::make('dapur.dapur')->with(['pesanan' => $data, 'penjualan' =>$penjualan]);
     }
 }

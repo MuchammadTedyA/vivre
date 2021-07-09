@@ -1,6 +1,13 @@
 @extends('layout.kitchenSystem')
 
 @section('isi')
+
+@if (Session::has('message'))
+<script>
+    alert("{!!Session::get('message')!!}");
+</script>
+@endif
+
 <style>
     .kepala{
         background-color: #269aed;
@@ -41,34 +48,41 @@
     
 </div> --}}
 <div class="card-columns">
+    @foreach ($pesanan as $item )
+
     <div class="card mb-3" style="max-width: 18rem;">
         <div class="card-header text-center kepala" style="background: #269aed;min-height: 120px;color: white">
             <div>
-                <h5 class="card-title" style='color:white'>Pesanan #03029</h5>
+                <h5 class="card-title" style='color:white'>Pesanan #{{ $item->id_penjualan }}</h5>
                 
-                <h6 class="card-subtitle mb-2" style='color:white; font-size:13px'>Minum di tempat <br> a/n Annan</h6>
+                {{-- <h6 class="card-subtitle mb-2" style='color:white; font-size:13px'>Minum di tempat <br> a/n Annan</h6> --}}
             </div>
             
         </div>
         <div class="card-body" style="background: #f2f2f2; min-height: 200px">
           
+           
             <div class='row'>
                 <div class='col-8'>
-                    <p class="card-text" >Hazelnut Choco</p>
+                    <p class="card-text" >{{ $item->nama_produk }}</p>
                 </div>
                 <div class='col'>
-                    <p class="card-text" style="text-align: right">1</p>
+                    <p class="card-text" style="text-align: right">{{ $item->jumlah }}</p>
                 </div>
             </div>
+            
+            
             
         </div>
         <div class="card-footer anu">
             <b>Pilih Status:</b>
                     <br>
-                    <button class="card-link dikerjakan" ><i class="bi bi-clock-fill"><br></i><p style="font-size: 10px">Dikerjakan</p></button>
-                    <button class="card-link pesanan" ><i class="bi bi-check-circle-fill"></i><p style="font-size: 10px">Pesanan Siap</p></button>
+                    <button class="card-link dikerjakan" ><a href=""><i class="bi bi-clock-fill"><br></i><p style="font-size: 10px">Dikerjakan</p></a></button>
+                    <button class="card-link pesanan" ><a href="pesananSiap/{{ $item->id_penjualan }}"><i class="bi bi-check-circle-fill"></i><p style="font-size: 10px">Pesanan Siap</p></a></button>
         </div>
     </div>
+    @endforeach
+    
 </div>
 
 
@@ -114,6 +128,14 @@
         border:#06bd3a solid 2px;
         color: white;
     }
+    .pesanan a{
+        color: white;
+    }
+
+    .pesanan a:hover{
+        color: #06bd3a;
+    }
+
     .dikerjakan{
     width: 80px;
     background-color: #ffe900; 
@@ -125,6 +147,12 @@
         background-color: white;
         color: #ffc524;
         border:#ffc524 solid 1px;
+    }
+    .dikerjakan a{
+        color: white;
+    }
+    .dikerjakan a:hover{
+        color: #ffc524;
     }
     .anu>.pesanan:hover{
         background-color: white;

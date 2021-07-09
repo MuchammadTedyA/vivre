@@ -114,6 +114,11 @@
             <li class="{{ Request::segment(1)==='bahanBaku' ? 'active' : '' }}">
                 <a class="text-center " href="{{ url('bahanBaku') }}"><i class="bi bi-inboxes-fill"></i><p style="font-size: 10px">Bahan Baku</p></a>
             </li>
+            @if (session()->get('posisi')=='manajer')
+            <li class="{{ Request::segment(1)==='kasir' ? 'active' : '' }}">
+                <a class="text-center " href="{{ url('kasir') }}"><i class="bi bi-door-open-fill"></i><p style="font-size: 10px">Ke Kasir</p></a>
+            </li>
+            @endif
         </ul>
     </div>
     

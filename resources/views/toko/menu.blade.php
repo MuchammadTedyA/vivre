@@ -23,9 +23,9 @@
         <a class="menuToko" href="{{ url('/tokoSaya') }}">Menu</a>
     </div>
     @if (session()->get('posisi')=='manajer')
-    <div>
+    {{-- <div>
         <a class="menuToko" href="{{ url('/tokoSaya/bahanBaku') }}">Bahan Baku</a>
-    </div>
+    </div> --}}
     <div>
         <a class="menuToko" href="{{ url('/tokoSaya/Karyawan') }}">Karyawan</a>
     </div>

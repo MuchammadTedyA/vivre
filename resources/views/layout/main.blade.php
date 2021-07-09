@@ -142,11 +142,14 @@
         <div class="{{ Request::segment(1)==='kasir' ? 'active' : '' }}">
           <a class="menu" href="{{ url('kasir') }}"><span class="text-center"><i class="bi bi-cart-fill" style="font-size: 2rem"></i><br>Pesanan Baru</span></a>
         </div>
-        <div class="{{ Request::segment(1)==='pembayaran' ? 'active' : '' }}">
-          <a class="menu" href="{{ url('pembayaran') }}"><img src="" alt="icon"><br>Pembayaran</a>
+        @if (session()->get('posisi')=='manajer')
+        <div class="{{ Request::segment(1)==='dapur' ? 'active' : '' }}">
+          <a class="menu" href="{{ url('dapur') }}"><i class="bi bi-door-open-fill" style="font-size: 2rem"></i><br>Ke Dapur</a>
         </div>
+        @endif
+        
         <div class="{{ Request::is('riwayat') ? 'active' : '' }}">
-          <a class="menu" href="#"><i class="bi bi-clock-history" style="font-size: 2rem"></i><br>Riwayat</a>
+          <a class="menu" href="riwayat"><i class="bi bi-clock-history" style="font-size: 2rem"></i><br>Riwayat</a>
         </div>
         <div class="{{ Request::segment(1)==='tokoSaya' ? 'active' : '' }}">
           <a class="menu" href="{{ url('tokoSaya') }}"><i class="bi bi-shop-window" style="font-size: 2rem"></i><br>Toko Saya</a>

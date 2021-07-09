@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Penjualan extends Migration
+class DetailPenjualan extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,11 @@ class Penjualan extends Migration
     public function up()
     {
         //
-        Schema::create('penjualan', function (Blueprint $table) {
-            $table->char('id_penjualan', 10)->primary();
-            $table->date('tanggal_penjualan');
-            $table->integer('total_penjualan');
-            $table->string('status',20);
-            // $table->string('nama_pelanggan',50);
-
+        Schema::create('detail_penjualan', function (Blueprint $table) {
+            $table->char('id_penjualan', 10);
+            $table->string('id_produk',5);
+            $table->integer('jumlah');
+            
             
         });
     }
@@ -33,6 +31,6 @@ class Penjualan extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('penjualan');
+        Schema::dropIfExists('detail_penjualan');
     }
 }

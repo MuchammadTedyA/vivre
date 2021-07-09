@@ -7,6 +7,7 @@ use App\Http\Controllers\karyawanController;
 use App\Http\Controllers\kasirController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\dapurController;
+use App\Http\Controllers\riwayatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,14 +30,24 @@ Route::get('/logout', [loginController::class, 'logout']);
 
 
 //////
-Route::get('/dapur', [PagesController::class, 'kitchenSystem']);
+
 
 Route::get('/pembayaran', [PagesController::class, 'pembayaran']);
+
+
+//RIWAYAT
+
+Route::get('/riwayat', [riwayatController::class, 'riwayatPenjualan']);
+Route::get('/diterima/{id}', [riwayatController::class, 'pesananDiterima']);
+
 
 //KASIR
 Route::get('/kasir', [kasirController::class, 'lihatSemuaProduk']);
 Route::get('/tambahCart/{id}', [kasirController::class, 'tambahCart']);
 Route::get('/hapusCart/{id}', [kasirController::class, 'hapusCart']);
+Route::get('/bayar', [kasirController::class, 'bayar']);
+Route::get('/tambahJumlah/{id}', [kasirController::class, 'tambahJumlah']);
+Route::get('/kurangJumlah/{id}', [kasirController::class, 'kurangJumlah']);
 
 //KARYAWAN
 Route::get('/tokoSaya/Karyawan', [karyawanController::class, 'lihatSemuaKaryawan']);
@@ -67,6 +78,8 @@ Route::post('/tambahProduk', [produkController::class, 'tambahProduk']);
 
 ////////////////////// DAPUR INI!!!!!!!!!!!!!!!!! /////
 
+Route::get('/dapur', [dapurController::class, 'lihatDapur']);
+
 Route::get('/produk', [dapurController::class, 'produk']);
 
 Route::get('produkTersedia/{id}', [dapurController::class, 'produkTersedia']);
@@ -80,8 +93,14 @@ Route::get('/halamanTambahBahan', [PagesController::class, 'halamanTambahBahan']
 Route::get('/barangMasuk/{id}', [dapurController::class, 'barangMasuk']);
 Route::get('/barangKeluar/{id}', [dapurController::class, 'barangKeluar']);
 
+Route::get('/pesananSiap/{id}', [dapurController::class, 'pesananSiap']);
+
+
+
 Route::post('/barangMasuk', [dapurController::class, 'simpanBarangMasuk']);
 Route::post('/barangKeluar', [dapurController::class, 'simpanBarangKeluar']);
+
+
 
 
 Route::post('/buatBahan', [dapurController::class, 'buatBahan']);
