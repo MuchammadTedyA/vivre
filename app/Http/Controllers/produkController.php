@@ -97,6 +97,16 @@ class produkController extends Controller
         return redirect()->back()->with('message', 'Produk Telah Ditambahkan');
     }
 
+    //UBAH
+
+    public function ubahProduk($id){
+        $data = DB::table('produk')
+        ->where('id_produk', '=',$id)
+        ->first();
+
+        return view::make('toko.ubahProduk')->with('produk', $data);
+    }
+
     //DELETE
 
     public function hapusProduk($id)

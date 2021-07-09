@@ -53,24 +53,37 @@ class loginController extends Controller
         $username = request()->get('username');
         $password = request()->get('password');
 
+        if($username){
+
+        }
+
         $admin = DB::table('pengguna')->where(['username' => $username, 'password' => $password],
         'posisi = manajer')->first();
         $dapur = DB::table('pengguna')->where(['username' => $username, 'password' => $password],
         'posisi = dapur')->first();
         $kasir = DB::table('pengguna')->where(['username' => $username, 'password' => $password],
         'posisi = kasir')->first();
-        if ($admin->posisi == 'manajer') {
+        $posisi='';
+        if($admin){
+            $posisi = $admin->posisi;
+        }elseif($dapur){
+            $posisi = $dapur->posisi;
+        }elseif($kasir){
+            $posisi = $kasir->posisi;
+        }
+
+        if ($posisi == 'manajer') {
             $request->session()->put('nama-user', $admin->nama_pengguna);
             $request->session()->put('username', $admin->username);
             $request->session()->put('password', $admin->password);
             $request->session()->put('posisi', $admin->posisi);
             return Redirect::to('/kasir')->with('message', 'Login Berhasil');
-        } elseif($dapur->posisi == 'dapur'){
+        } elseif($posisi == 'dapur'){
             $request->session()->put('nama-user', $admin->nama_pengguna);
             $request->session()->put('username', $admin->username);
             $request->session()->put('posisi', $admin->posisi);
             return Redirect::to('/dapur')->with('message', 'Login Berhasil');
-        } elseif($kasir->posisi == 'kasir'){
+        } elseif($posisi == 'kasir'){
             $request->session()->put('nama-user', $admin->nama_pengguna);
             $request->session()->put('username', $admin->username);
             $request->session()->put('posisi', $admin->posisi);

@@ -71,7 +71,8 @@ Route::get('tokoSaya/kopiMenu', [produkController::class, 'lihatKopiProduk']);
 Route::get('tokoSaya/nonKopiMenu', [produkController::class, 'lihatNonKopiProduk']);
 Route::get('tokoSaya/makanan', [produkController::class, 'lihatMakananProduk']);
 
-Route::get('tokoSaya/hapusProduk/{id}', [produkController::class, 'hapusProduk']);
+Route::get('hapusProduk/{id}', [produkController::class, 'hapusProduk']);
+Route::get('tokoSaya/editProduk/{id}', [produkController::class, 'ubahProduk']);
 
 
 Route::post('/tambahProduk', [produkController::class, 'tambahProduk']);

@@ -36,7 +36,7 @@
             <td>{{ $item ->kategori_produk }}</td>
             <td>@currency($item->harga)</td>
             <td><img width="150px" src="{{ url('/produk_img/'.$item->gambar) }}"></td>
-            <td style="text-align: center"><a class="btn btn-danger" href="hapusProduk/{{$item->id_produk}}" style="width: 85px">Hapus</a> &nbsp; <a class="btn btn-warning" href="editBahan/{{$item->id_produk}}" style="width: 85px">Ubah</a></td>
+            <td style="text-align: center"><a class="btn btn-danger" href="hapusProduk/{{$item->id_produk}}" style="width: 85px">Hapus</a> &nbsp; <a class="btn btn-warning" href="editProduk/{{$item->id_produk}}" style="width: 85px">Ubah</a></td>
         </tr>
           @endforeach
             
