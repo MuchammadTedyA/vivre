@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use BahanBaku;
 use Illuminate\Http\Request;
 
 use DB;
@@ -85,7 +86,7 @@ class dapurController extends Controller
 
         
 
-        return redirect()->back()->with('message', 'Produk Telah Ditambahkan');
+        return redirect('/bahanBaku')->with('message', 'Produk Telah Ditambahkan');
     }
 
 
