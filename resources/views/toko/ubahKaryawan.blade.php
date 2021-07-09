@@ -2,7 +2,6 @@
 
 @section('isiToko')
 
-
 @if (Session::has('message'))
 <script>
     alert("{!!Session::get('message')!!}");
@@ -10,9 +9,9 @@
 @endif
 
 <div class="navAtas">
-    <div class="container">
+    
         <h3>Toko Saya</h3>
-    </div>
+    
     
 </div >
 
@@ -20,24 +19,18 @@
     <div>
         <a class="menuToko" href="">Jam Operasional</a>
     </div>
-    <div class="active">
+    <div >
         <a class="menuToko" href="{{ url('/tokoSaya') }}">Menu</a>
     </div>
-    @if (session()->get('posisi')=='manajer')
     {{-- <div>
         <a class="menuToko" href="{{ url('/tokoSaya/bahanBaku') }}">Bahan Baku</a>
     </div> --}}
-    <div>
+    <div class="active">
         <a class="menuToko" href="{{ url('/tokoSaya/Karyawan') }}">Karyawan</a>
     </div>
-    @endif
-    
-    
 </div>
 
-
 <div class="isiToko1">
-  
     <div class="isiToko">
         <div class="row">
             <div class="col-sm-8">
@@ -47,45 +40,41 @@
                     </div>
                     <button type="button" class="btn col-sm-2" style="background-color: #13597D; color: white; border-radius: 10px">Go</button>
                 </div>
-                {!! Form::open(array('method'=>'POST','url'=>'editProduk', 'enctype'=>'multipart/form-data')) !!}
-                {!! Form::hidden('id',$produk->id_produk, ['class' => 'form-control'])!!}
+                {!! Form::open(array('method'=>'POST','url'=>'ubahKaryawan', 'enctype'=>'multipart/form-data')) !!}
+                {!! Form::hidden('id',$pengguna->username, ['class' => 'form-control'])!!}
                 <form class="ma">
                     <div class="form-group margin">
-                      <label for="formGroupExampleInput">Nama Produk</label>
-                      <input type="text" name="namaProduk" class="form-control" value="{{ $produk->nama_produk }}" id="formGroupExampleInput" placeholder="" required>
+                      <label for="formGroupExampleInput">Nama Karyawan</label>
+                      <input name="namaKaryawan" type="text" class="form-control"  value="{{ $pengguna->nama_pengguna }}" id="formGroupExampleInput" placeholder="" required>
                     </div>
                     <div class="form-group margin">
-                      <label for="formGroupExampleInput2">Deskripsi</label>
-                      <textarea name="deskripsiProduk" type="area" class="form-control" id="formGroupExampleInput2" placeholder="" value="">{{ $produk->deskripsi_produk }}</textarea>
+                        <label for="formGroupExampleInput2">Password</label>
+                        <input name="password" type="password" class="form-control" id="formGroupExampleInput2" value="{{ $pengguna->password }}" placeholder="" required>
                     </div>
                     <div class="form-group margin">
-                        <label for="validationCustom04" class="form-label">Kategori</label>
-                        <select class="form-select" aria-label="Default select example" name="kategoriProduk" required>
-                            <option  disabled >--Pilih Kategori--</option>
-                            <?php $kat=$produk->kategori_produk?>
-                            @if ( $kat == 'kopi')
-                            <option selected value="kopi">Kopi</option>
-                            <option value="nonKopi">Non-Kopi</option>
-                            <option value="makanan">Makanan</option>
+                      <label for="formGroupExampleInput2">Alamat Karyawan</label>
+                      <input name="alamat" type="area" class="form-control" id="formGroupExampleInput2" value="{{ $pengguna->alamat }}"placeholder="" required>
+                    </div>
+                    
+                    <div class="form-group margin">
+                        <label for="validationCustom04" class="form-label">Posisi</label>
+                        <select class="form-select" aria-label="Default select example" name="posisi" required>
+                            <option  disabled value="">--Pilih Posisi--</option>
+                            <?php $posisi=$pengguna->posisi?>
+
+                            @if ($posisi == 'kasir')
+                            <option selected value="kasir">Kasir</option>
+                            <option value="dapur">Dapur</option>
                             @endif
-                            @if ( $kat == 'nonKopi')
-                            <option  value="kopi">Kopi</option>
-                            <option selected value="nonKopi">Non-Kopi</option>
-                            <option value="makanan">Makanan</option>
+
+                            @if ($posisi == 'dapur')
+                            <option value="kasir">Kasir</option>
+                            <option selected value="dapur">Dapur</option>
                             @endif
-                            @if ( $kat == 'makanan')
-                            <option  value="kopi">Kopi</option>
-                            <option value="nonKopi">Non-Kopi</option>
-                            <option selected value="makanan">Makanan</option>
-                            @endif
-                            
+
                             
                             
                           </select>
-                    </div>
-                    <div class="form-group margin">
-                        <label for="formGroupExampleInput2">Harga</label>
-                        <input name="hargaProduk" type="area" class="form-control" id="formGroupExampleInput2" placeholder="" value="{{ $produk->harga }}"  required>
                     </div>
                 
             </div>
@@ -94,35 +83,35 @@
     
             
             
-            <div class="col-sm-3  text-center" >
+                <div class="col-sm-3  text-center" >
 
                 
                 
-                <div class="row pe-4 ps-4 pt-4 pb-4" style="background: #fff;border-radius: 10px; height: 340px; margin-top: 30px;">
-                    
-                    <p>
-                         Gambar Produk
-                    </p>
-                    <img width="150px" src="{{ url('/produk_img/'.$produk->gambar) }}" style="margin-bottom: 10px">
+                    <div class="row pe-4 ps-4 pt-4 pb-4" style="background: #fff;border-radius: 10px; height: 340px; margin-top: 100px">
+                        
+                        <p>
+                             Masukan Foto Karyawan
+                        </p>
+                        <img width="150px" src="{{ url('/karyawan_img/'.$pengguna->gambar) }}" style="margin-bottom: 10px">
                     <br>
-                    <input class="mb-2" value="{{ url('/produk_img/'.$produk->gambar) }}" type="file" name="file" required>
-                         
-               </div><br>
-                
-                <button type="submit" class="btn" style="background-color: #13597D; color: white; width: 150px; margin-top: 20px; border-radius: 10px">Simpan</button>
-            </div>
-        </form>
+                        <input class="mb-2" type="file" name="file" required>
+                             
+                   </div><br>
+                    
+                    <button type="submit" class="btn" style="background-color: #13597D; color: white; width: 150px; margin-top: 20px; border-radius: 10px">Tambah Karyawan</button>
+                </div>
+            </form>
         </div>
         {!! Form::close() !!}
 
     </div>
     <style>
         .foto{
-            
+            position: relative;
             margin: auto;
             margin-top: 50px;
             height: 260px;
-            width: 220px;
+            width: 200px;
             background-color: white;
             border-radius: 15px;
         }
@@ -138,7 +127,8 @@
        hr.new1 {
       border-top: 4px solid #0b3042;
     }
-    </style>  
+    </style>
+    
 </div>
 <script>
     $(document).ready(function () {
@@ -151,6 +141,7 @@
         });
     });
 </script>
+
 <style>
   .isiToko1{
     
@@ -173,7 +164,6 @@
         background-color: white; /* Black*/
         color: #13597D
       }
-      
       .navSamping a {
         
         color: white;
@@ -202,12 +192,11 @@
       
     .navAtas{
       overflow: hidden;
-      background-color: white;
         position: fixed;
         height: 100px;
         width: 100%;
         top: 0;
-        
+        background-color: white;
         
     }
     .navAtas h3{
@@ -220,6 +209,8 @@
     }
 </style>
 
+
 {{--  --}}
+
 
 @endsection

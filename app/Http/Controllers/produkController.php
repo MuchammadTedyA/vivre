@@ -107,6 +107,41 @@ class produkController extends Controller
         return view::make('toko.ubahProduk')->with('produk', $data);
     }
 
+    public function editProduk(Request $request){
+        $id = request()->get('id');
+
+        $this->validate($request, [
+            'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        // menyimpan data file yang diupload ke variabel $file
+        $file = $request->file('file');
+        
+        
+            $nama_file = time() . "_" . $file->getClientOriginalName();
+
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'produk_img';
+            $file->move($tujuan_upload, $nama_file);
+
+            $data= array(
+                'nama_produk' => request()->get('namaProduk'),
+                'deskripsi_produk' =>request() ->get('deskripsiProduk'),
+                'kategori_produk' => request()->get('kategoriProduk'),
+                'harga' => request()->get('hargaProduk'),
+                'gambar' => $nama_file
+                
+            );
+
+
+            
+
+        DB::table('produk')->where('id_produk', '=', $id)->update($data);
+
+        
+        return redirect('/tokoSaya')->with('message', 'Berhasil Mengubah Data Produk');
+    }
+
     //DELETE
 
     public function hapusProduk($id)

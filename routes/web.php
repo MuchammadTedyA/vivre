@@ -55,8 +55,9 @@ Route::get('/tokoSaya/kasir', [karyawanController::class, 'lihatKasirKaryawan'])
 Route::get('/tokoSaya/dapur', [karyawanController::class, 'lihatDapurKaryawan']);
 
 Route::get('tokoSaya/hapusKaryawan/{id}', [karyawanController::class, 'hapusKaryawan']);
+Route::get('tokoSaya/editKaryawan/{id}', [karyawanController::class, 'ubahKaryawan']);
 
-
+Route::post('/ubahKaryawan', [karyawanController::class, 'editKaryawan']);
 Route::post('/tambahKaryawan', [karyawanController::class, 'tambahKaryawan']);
 
 Route::get('/tokoSaya/pengaturanAkun', [PagesController::class, 'tokoSaya']);
@@ -76,6 +77,7 @@ Route::get('tokoSaya/editProduk/{id}', [produkController::class, 'ubahProduk']);
 
 
 Route::post('/tambahProduk', [produkController::class, 'tambahProduk']);
+Route::post('/editProduk', [produkController::class, 'editProduk']);
 
 ////////////////////// DAPUR INI!!!!!!!!!!!!!!!!! /////
 

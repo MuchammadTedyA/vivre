@@ -73,6 +73,53 @@ class karyawanController extends Controller
         
     }
 
+
+    //UBAH
+    public function ubahKaryawan($id){
+        $data = DB::table('pengguna')
+        ->where('username', '=',$id)
+        ->first();
+
+        return view::make('toko.ubahKaryawan')->with('pengguna', $data);
+    }
+
+    public function editKaryawan(Request $request){
+        $id = request()->get('id');
+
+        $this->validate($request, [
+            'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        // menyimpan data file yang diupload ke variabel $file
+        $file = $request->file('file');
+        
+        
+            $nama_file = time() . "_" . $file->getClientOriginalName();
+
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'karyawan_img';
+            $file->move($tujuan_upload, $nama_file);
+
+            $data= array(
+                'nama_pengguna' => request()->get('namaKaryawan'),
+                'password' =>request() ->get('password'),
+                'alamat' => request()->get('alamat'),
+                'posisi' => request()->get('posisi'),
+                'gambar' => $nama_file
+                
+            );
+
+
+            
+
+        DB::table('pengguna')->where('username', '=', $id)->update($data);
+
+        
+        return redirect('/tokoSaya/Karyawan')->with('message', 'Berhasil Mengubah Data Karyawan');
+    }
+
+    //
+
     public function hapusKaryawan($id)
     {
         $nama_gambar = DB::table('pengguna')->where('username', '=', $id)->first();
