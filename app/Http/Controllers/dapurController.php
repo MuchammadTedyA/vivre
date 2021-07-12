@@ -210,7 +210,7 @@ class dapurController extends Controller
     }
 
     public function lihatDapur(){
-        $penjualan= DB::table('penjualan')->get();
+        $penjualan= DB::table('penjualan')->where('status', '=', 'dikerjakan')->get();
         $data = DB::table('detail_penjualan')
         ->join('produk', 'detail_penjualan.id_produk', '=', 'produk.id_produk')
         ->join('penjualan', 'detail_penjualan.id_penjualan', '=', 'penjualan.id_penjualan')

@@ -45,7 +45,7 @@ class kasirController extends Controller
 
     function tambahJumlah($id_produk){
         $cart= session('cart');
-        
+        $id = $id_produk;
         foreach($cart as $ct => $val){
             $id_produk = $ct;
             $nama_produk = $val['nama_produk'];
@@ -53,7 +53,7 @@ class kasirController extends Controller
             $jumlah = $val["jumlah"];
 
             $jumlah= $jumlah+1;
-            $cart[$id_produk] = [ 
+            $cart[$id] = [ 
             'nama_produk' => $nama_produk,
             'harga_produk' => $harga,
             'jumlah' => $jumlah
@@ -67,7 +67,7 @@ class kasirController extends Controller
 
     function kurangJumlah($id_produk){
         $cart= session('cart');
-        
+        $id = $id_produk;
         foreach($cart as $ct => $val){
             $id_produk = $ct;
             $nama_produk = $val['nama_produk'];
@@ -75,17 +75,11 @@ class kasirController extends Controller
             $jumlah = $val["jumlah"];
 
             $jumlah= $jumlah-1;
-
-            if($jumlah ==0){
-                unset($cart[$id_produk]);
-                session(['cart' => $cart]);
-            }else{
-                $cart[$id_produk] = [ 
-                    'nama_produk' => $nama_produk,
-                    'harga_produk' => $harga,
-                    'jumlah' => $jumlah
-                ];
-            }
+            $cart[$id] = [ 
+            'nama_produk' => $nama_produk,
+            'harga_produk' => $harga,
+            'jumlah' => $jumlah
+        ];
             
         
             

@@ -17,8 +17,14 @@ class riwayatController extends Controller
         ->join('penjualan', 'detail_penjualan.id_penjualan', '=', 'penjualan.id_penjualan')
         ->where('penjualan.status', '=', 'pesanan siap')
         ->orWhere('penjualan.status', '=', 'diterima')
+        ->orderBy('detail_penjualan.id_penjualan', 'desc')
         ->get();
-        return view::make('riwayat')->with(['penjualan' => $data]);
+        $penjualan = DB::table('penjualan')->
+        where('status', '=', 'pesanan siap')
+        ->orWhere('status', '=', 'diterima')
+        ->orderBy('id_penjualan', 'desc')
+        ->get();
+        return view::make('riwayat')->with(['penjualan' => $penjualan, 'pesanan'=>$data]);
     }
 
     public function pesananDiterima($id){

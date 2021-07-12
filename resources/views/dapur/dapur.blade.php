@@ -48,7 +48,7 @@
     
 </div> --}}
 <div class="card-columns">
-    @foreach ($pesanan as $item )
+    @foreach ($penjualan as $item )
 
     <div class="card mb-3" style="max-width: 18rem;">
         <div class="card-header text-center kepala" style="background: #269aed;min-height: 120px;color: white">
@@ -61,15 +61,22 @@
         </div>
         <div class="card-body" style="background: #f2f2f2; min-height: 200px">
           
+            <?php $idPejualan = $item->id_penjualan?>
+           @foreach ($pesanan as $pesan)
+           <?php  $pes = $pesan->id_penjualan?>
+            @if ( $idPejualan == $pes )
+                <div class='row'>
+                    <div class='col-8'>
+                        <p class="card-text" >{{ $pesan->nama_produk }}</p>
+                    </div>
+                    <div class='col'>
+                        <p class="card-text" style="text-align: right">{{ $pesan->jumlah }}</p>
+                    </div>
+                </div>
+            @endif
            
-            <div class='row'>
-                <div class='col-8'>
-                    <p class="card-text" >{{ $item->nama_produk }}</p>
-                </div>
-                <div class='col'>
-                    <p class="card-text" style="text-align: right">{{ $item->jumlah }}</p>
-                </div>
-            </div>
+           @endforeach
+            
             
             
             

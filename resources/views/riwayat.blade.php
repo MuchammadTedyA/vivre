@@ -42,10 +42,38 @@
               @foreach ($penjualan as $item )
               <tr>
                 <td>{{ $item ->id_penjualan }}</td>
-                <td>{{ $item ->nama_produk }}</td>
-                <td>{{ $item ->jumlah }}</td>
+
+                <td>
+                    <?php $idPejualan = $item->id_penjualan?>
+                    @foreach ( $pesanan as $pesan)
+                        <?php  $pes = $pesan->id_penjualan?>
+                        @if ( $idPejualan == $pes )
+                            {{ $pesan ->nama_produk }}<hr>
+                            
+                        @endif
+                    @endforeach
+                </td>
+
+                <td>
+                    <?php $idPejualan = $item->id_penjualan?>
+                    @foreach ( $pesanan as $pesan)
+                        <?php  $pes = $pesan->id_penjualan?>
+                        @if ( $idPejualan == $pes )
+                            {{ $pesan ->jumlah }}<hr>
+                            
+                        @endif
+                    @endforeach
+                </td>
+
+
+                {{-- <td>{{ $item ->nama_produk }}</td>
+                <td>{{ $item ->jumlah }}</td> --}}
+
+
                 <td>{{ $item ->tanggal_penjualan }}</td>
                 <td>{{ $item ->status }}</td>
+
+
                 <?php $status = $item ->status ?>
                 @if ( $status == 'diterima')
                 <td><i class="bi bi-check-circle-fill" style="color: green"></i></td>
